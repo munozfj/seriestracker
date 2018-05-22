@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col" *ngIf="loaded">
+    <h2>Search for: <small>{{ query.split('-').join(' ') }}</small> </h2>
+
+    <ngb-pagination class="d-flex justify-content-end" [pageSize]="20"
+                                                                                    [collectionSize]="series.total_results"
+                                                                                    [boundaryLinks]="true"
+                                                                                    [maxSize]="5"
+                                                                                    [rotate]="true"
+                                                                                    [(page)]="series.page"
+                                                                                    (pageChange)="loadPage($event)" >
+    </ngb-pagination>
+
+    <app-list-display [data]="series"></app-list-display>
+
+    <ngb-pagination class="d-flex justify-content-end mt-3" [pageSize]="20"
+                                                                                    [collectionSize]="series.total_results"
+                                                                                    [boundaryLinks]="true"
+                                                                                    [maxSize]="5"
+                                                                                    [rotate]="true"
+                                                                                    [(page)]="series.page"
+                                                                                    (pageChange)="loadPage($event)" >
+    </ngb-pagination>
+
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" routerLink="/" >Series</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item" [routerLinkActive]="['active']" >
+          <a class="nav-link" routerLink="/login" >Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" routerLink="/"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuario
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/" >Action</a>
+            <a class="dropdown-item" routerLink="/" >Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/" >Something else here</a>
+          </div>
+        </li>
+
+      </ul>
+      <form class="form-inline" >
+        <input type="text" [(ngModel)]="query" name="query" (keyup.enter)="onSearch()"  class="form-control mr-sm-2"
+                   placeholder="Search ..."  >
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="onSearch()" type="button">Search</button>
+      </form>
+    </div>
+  </nav>
+</header>
