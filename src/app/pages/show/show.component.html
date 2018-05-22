@@ -1,0 +1,61 @@
+<div class="row" *ngIf="serie">
+    <div class="col-12 ">
+      <h2 class="text-center   "> {{ serie.original_name }}</h2>
+      <hr class="new2">
+    </div>
+  </div>
+  <div class="row" *ngIf="serie">
+    <figure class="col-12 col-md-4 col  ">
+      <img class="img-fluid" src="{{ serie.poster_path  | showImage:widthPoster:'poster' }} " [ngStyle]="{'width.px': widthPoster }"
+               alt="{{ serie.original_name }}" title="{{ serie.original_name }}">
+    </figure>
+    <div class="col-12 col-md-8">
+      <h3>Sinopsis</h3>
+      <p> {{ serie.overview }} </p>
+      <hr>
+      <h3>Información General</h3>
+      <p>
+        <span class=" font-weight-bold ">Fecha de inicio:</span> {{ serie.first_air_date }} </p>
+      <p>
+        <span class=" font-weight-bold ">Duración:</span> {{ serie.episode_run_time }} min. </p>
+      <p>
+        <span class=" font-weight-bold ">Homepage:</span> {{ serie.homepage }} </p>
+      <p>
+        <span class=" font-weight-bold ">Fecha fin de temporadas:</span> {{ serie.last_air_date }} </p>
+      <p>
+        <span class=" font-weight-bold ">Cadena:</span>
+      </p>
+      <figure *ngFor="let net of serie.networks">
+        <img class="w92" src="{{ net.logo_path  | showImage:500:'logo' }} " alt="{{ net.name }}" title="{{ net.name }}">
+      </figure>
+      <p>
+        <span class=" font-weight-bold ">Rating</span> {{ serie.vote_average | number:'1.1-1' }} </p>
+      <p>
+        <span class=" font-weight-bold ">Generos:</span>
+      </p>
+      <div *ngFor="let gen of serie.genres">
+        <kbd> {{ gen.name}} </kbd>
+      </div>
+
+      <hr class="new2">
+      <article *ngIf="seasonEpisodes">
+        <h3>Información Temporadas</h3>
+        <h4>
+          <span class=" font-weight-bold  ">{{ seasonEpisodes.name }}</span>
+        </h4>
+        <!-- <div class="row" *ngFor="let ep of seasonEpisodes.episodes">
+          <div class="col-10">
+            <p>{{ep.episode_number | number:'2.0-0' }} - {{ ep.name }}</p>
+            <p> {{ ep.air_date }} </p>
+            <p *ngIf=" ep.overview" class="muted ">{{ ep.overview }} </p>
+          </div>
+          <div class="col-2 align-content-center">
+            <input type="checkbox" name="visto" id="visto">
+          </div>
+        </div> -->
+      </article>
+
+      <button (click)="returnTo()" class="btn btn-success mt-3 mb-3">Volver</button>
+    </div>
+  </div>
+

@@ -26,3 +26,35 @@ footer {
 
 
 body { margin: 0; }
+
+.w45 {
+  width: 45px;
+}
+.w92 {
+  width: 92px;
+}
+
+.h250 {
+  height: 250px;
+}
+.w185 {
+  width: 185px;
+}
+
+.w300 {
+  width: 300px;
+}
+
+.w500 {
+  width: 500px;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.new2 {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+

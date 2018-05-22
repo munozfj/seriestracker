@@ -1,7 +1,7 @@
 <div class="card card-body " *ngFor="let serie of data.results  ">
     <div class="row">
       <figure class="col-12 col-md-3">
-        <img class="cover img-fluid pointer" [routerLink]="['/show', serie.id]" src="{{ serie.poster_path | showImage:widthTS:'poster' }}"
+        <img class="cover img-fluid pointer" (click)="goTo( serie.id )" src="{{ serie.poster_path | showImage:widthTS:'poster' }}"
           alt="{{ serie.original_name }}"  title="{{ serie.original_name }}"  [ngStyle]="{'width.px': widthTS }">
       </figure>
       <div class="cold-12 col-md-9 ">
@@ -19,7 +19,7 @@
           <span class=" badge badge-warning">{{ serie.vote_count}} </span>
           <p>
             <span class="font-weight-bold font-italic">Sinopsis:</span> {{ serie.overview | slice:0:120}} </p>
-          <button [routerLink]="['/show',serie.id]" class="btn btn-success">Saber más ...</button>
+          <button (click)="goTo( serie.id )" class="btn btn-success">Saber más ...</button>
       </div>
     </div>
   </div>

@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListDisplayComponent } from './pages/shared/list-display/list-display.component';
 import { ShowImagePipe } from './pipes/show-image.pipe';
+import { ShowComponent } from './pages/show/show.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ShowImagePipe } from './pipes/show-image.pipe';
     SearchComponent,
     NotFoundComponent,
     ListDisplayComponent,
-    ShowImagePipe
+    ShowImagePipe,
+    ShowComponent
   ],
   imports: [
     BrowserModule,

@@ -11,14 +11,14 @@ export class HeaderComponent {
   constructor( private router: Router) { }
 
   onSearch() {
-    console.log( this.query  );
+    // console.log( this.query  );
     if ( !this.query ) { return null; }
 
     // formateo el criterio de busqueda
     const query = this.query.trim().split(' ').join('-');
 
     // navego a la pagina de search
-    this.router.navigate(['/search', query]);
+    this.router.navigate(['/search', query ]);
   }
 
 }

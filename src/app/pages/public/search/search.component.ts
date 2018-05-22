@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 export class SearchComponent implements OnInit {
 
   query = '';
+  page: number;
   series: any;
   loaded = false;
   stm: string[];
@@ -21,24 +22,43 @@ export class SearchComponent implements OnInit {
                       private actRoute: ActivatedRoute ) { }
 
   ngOnInit() {
+
+   /*  this.query = this.actRoute.snapshot.paramMap.get('query');
+    this.stm = this.query.split('-');
+
+    const pageStorage = ( localStorage.getItem('component') === 'search' ) ? +localStorage.getItem('page') : 1;
+    localStorage.removeItem('component');
+    localStorage.removeItem('query');
+    localStorage.removeItem('page');
+
+  // console.log(this.query + '  ' + pageStorage);
+    this.tmdb.getSeriesWithWords(this.stm , pageStorage).subscribe( result => {this.series = result;
+     //  console.log(result);
+      this.loaded = true;
+    } ); */
+
     this.actRoute.paramMap.pipe(  switchMap(params => {this.query = params.get('query');
                                                                                          // tslint:disable-next-line:max-line-length
                                                                                          this.stm = this.query.split('-');
-                                                                                         return this.tmdb.getSeriesWithWords(this.stm , 1);
+
+   const pageStorage = ( localStorage.getItem('component') === 'search' ) ? +localStorage.getItem('page') : 1;
+    localStorage.removeItem('component');
+    localStorage.removeItem('query');
+    localStorage.removeItem('page');
+                           return this.tmdb.getSeriesWithWords(this.stm , pageStorage);
                                                                                         }
                                                                       )
                                                                     ).subscribe( result => {this.series = result;
                                                                     console.log(result);
                                                                     this.loaded = true;
                                                                   } );
-
   }
 
 
 loadPage(pageNr: number) {
   this.loaded = false;
   this.tmdb.getSeriesWithWords(this.stm, pageNr).subscribe( result => {this.series = result;
-    console.log(result);
+    // console.log(result);
     this.loaded = true;
   } );
 }

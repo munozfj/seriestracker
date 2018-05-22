@@ -24,4 +24,13 @@ export class TheMovieDBService {
 
     return this.http.jsonp(query, 'callback=JSONP_CALLBACK');
   }
+
+  getId(id: number) {
+    const query = `${this.urlDB}tv/${id}?api_key=${this.apiKey}&language=es`;
+    // query += '&callback=JSONP_CALLBACK';
+
+    //  console.log(query);
+
+    return this.http.jsonp(query, 'callback=JSONP_CALLBACK');
+  }
 }
