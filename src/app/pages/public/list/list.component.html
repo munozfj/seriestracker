@@ -1,6 +1,32 @@
 <div class="row" *ngIf="loaded; else loading">
   <div class="col" *ngIf="loaded && series.results.length > 0; else notFound" >
-    <h2>Search for: <small>{{ query.split('-').join(' ') }}</small> </h2>
+    <h2 *ngIf="base === 'list' && subBase === 'search' ; else moreList ">Search for: <small>{{ query.split('-').join(' ') }}</small> </h2>
+
+
+
+    <ng-template #moreList>
+        <h2 *ngIf="base === 'list' && subBase === 'series' ">Series</h2>
+      <h3 *ngIf="base === 'list' && subBase === 'series' && query === 'top' ">Más populares</h3>
+      <h3 *ngIf="query === 'year' ">Shows estrenados en lo que va de {{ year | date:'yyyy' }} </h3>
+      <h3 *ngIf="query === 'upcoming' ">Próximos lanzamientos</h3>
+
+      <select class="custom-select mb-3" (change)="listChange( selectOrder.value )" #selectOrder name="order" id="order">
+        <option value="popularity.desc" selected > Popularidad (descendiente)</option>
+        <option value="popularity.asc">Popularidad (ascendente)</option>
+        <option value="release_date.desc">Fecha de inicio (descendiente)</option>
+        <option value="release_date.asc">Fecha de inicio  (ascendente)</option>
+        <option value="original_title.desc">Nombre original (descendente)</option>
+        <option value="original_title.asc">Nombre original (ascendente)</option>
+        <option value="vote_average.desc">Voto promedio (descendiente)</option>
+        <option value="vote_average.asc">Voto promedio (ascendente)</option>
+        <option value="vote_count.desc">Cantidad de votos (descendiente)</option>
+        <option value="vote_count.asc">Cantidad de votos (ascendente)</option>
+      </select>
+
+    </ng-template>
+
+
+
 
     <ngb-pagination class="d-flex justify-content-end" [pageSize]="20"
                                                                                     [collectionSize]="series.total_results"
@@ -11,7 +37,7 @@
                                                                                     (pageChange)="loadPage($event)" >
     </ngb-pagination>
 
-    <app-list-display [data]="series" [component]="base" [query]="query" [page]="series.page" ></app-list-display>
+    <app-list-display [data]="series" [base]="base" [subbase]="subBase" [query]="query" [page]="series.page" ></app-list-display>
 
     <ngb-pagination class="d-flex justify-content-end mt-3" [pageSize]="20"
                                                                                     [collectionSize]="series.total_results"

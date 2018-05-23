@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -38,10 +39,19 @@ export class GalleryComponent {
 
   // public backgroundImg: SafeStyle;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer,
+                     private router: Router) { }
 
   sanitizeImage(url: string) {
     return this.sanitizer.bypassSecurityTrustStyle('url(' + url + ')');
   }
 
+  goTo( id: number) {
+    localStorage.removeItem('base');
+    localStorage.removeItem('sub-base');
+    localStorage.removeItem('query');
+    localStorage.removeItem('page');
+    this.router.navigate(['/show', id]);
+
+  }
 }

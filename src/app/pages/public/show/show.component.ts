@@ -38,7 +38,11 @@ export class ShowComponent implements OnInit {
 
   returnTo() {
     // console.log('quiero volver');
-    const toUrl = '/list/' + localStorage.getItem('base') + '/' + localStorage.getItem('query');
+    let  toUrl = '/' ;
+    toUrl += ( localStorage.getItem('base') ) ? '/' + localStorage.getItem('base')  : '';
+    toUrl += ( localStorage.getItem('sub-base') ) ? '/' + localStorage.getItem('sub-base')  : '';
+    toUrl += ( localStorage.getItem('query') ) ? '/' + localStorage.getItem('query')  : '';
+   // localStorage.getItem('sub-base') + '/' + localStorage.getItem('query');
     // console.log('quiero volver a: ' + toUrl);
     this.router.navigate([toUrl]);
   }

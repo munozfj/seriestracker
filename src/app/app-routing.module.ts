@@ -10,8 +10,8 @@ import { ShowComponent } from './pages/public/show/show.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'list/:base/:query', component: ListComponent },
   { path: 'show/:id', component: ShowComponent },
+  { path: ':base/:subbase/:query', component: ListComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

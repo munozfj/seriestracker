@@ -9,20 +9,20 @@
     <!-- pirmera columna-->
     <div class="col-12 col-md-6">
       <div class="row">
-        <div class="col-12 gal-big  h500" [ngStyle]="{background: data.results[0].backdrop_path  | showImage:500:'backdrop':'url'  , 'background-size': 'cover' , 'background-position': 'center center'  }">
+        <div class="col-12 gal-big  h500 pointer" [ngStyle]="{background: data.results[0].backdrop_path  | showImage:500:'backdrop':'url'  , 'background-size': 'cover' , 'background-position': 'center center'  }"  (click)="goTo(data.results[0].id)" >
           <app-little-info [data2]="data.results[0]"></app-little-info>
         </div>
       </div>
       <div class="row">
-        <div class="col-4 gal-small  h300" [ngStyle]="{background: data.results[4].poster_path  | showImage:500:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+        <div class="col-4 gal-small  h300  pointer " [ngStyle]="{background: data.results[4].poster_path  | showImage:500:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }"   (click)="goTo(data.results[4].id)"  >
           <app-little-info [data2]="data.results[4]"></app-little-info>
         </div>
 
-        <div class="col-4 gal-small  h300" [ngStyle]="{background: data.results[5].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+        <div class="col-4 gal-small  h300   pointer" [ngStyle]="{background: data.results[5].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }"    (click)="goTo(data.results[5].id)"  >
           <app-little-info [data2]="data.results[5]"></app-little-info>
         </div>
 
-        <div class="col-4 gal-small h300" [ngStyle]="{background: data.results[6].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+        <div class="col-4 gal-small h300   pointer" [ngStyle]="{background: data.results[6].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }"   (click)="goTo(data.results[6].id)"  >
           <app-little-info [data2]="data.results[6]"></app-little-info>
         </div>
 
@@ -31,18 +31,18 @@
     <!-- segunda columna-->
     <div class="col-12 col-md-6">
       <div class="row ">
-        <div class=" col-4  h300" [ngStyle]="{background: data.results[1].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+        <div class=" col-4  h300   pointer" [ngStyle]="{background: data.results[1].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }"   (click)="goTo(data.results[1].id)"  >
           <app-little-info [data2]="data.results[1]"></app-little-info>
         </div>
-        <div class="col-4   h300" [ngStyle]="{background: data.results[2].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+        <div class="col-4   h300   pointer" [ngStyle]="{background: data.results[2].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }"  (click)="goTo(data.results[2].id)"  >
           <app-little-info [data2]="data.results[2]"></app-little-info>
         </div>
-        <div class="col-4   h300" [ngStyle]="{background: data.results[3].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+        <div class="col-4   h300  pointer" [ngStyle]="{background: data.results[3].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }"    (click)="goTo(data.results[3].id)"  >
           <app-little-info [data2]="data.results[3]"></app-little-info>
         </div>
       </div>
       <div class="row ">
-        <div class="col-12  h500" [ngStyle]="{background: data.results[7].backdrop_path  | showImage:500:'backdrop':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+        <div class="col-12  h500  pointer" [ngStyle]="{background: data.results[7].backdrop_path  | showImage:500:'backdrop':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }"   (click)="goTo(data.results[7].id)"  >
           <app-little-info [data2]="data.results[7]"></app-little-info>
         </div>
       </div>

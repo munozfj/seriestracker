@@ -7,6 +7,8 @@ The Open Movie Database API http://www.omdbapi.com/
 
 The TV Database API http://thetvdb.com/wiki/index.php?title=Programmers_API
 
+TV Maze: http://www.tvmaze.com/
+
 ## Articule about Sticky Footer
 https://css-tricks.com/couple-takes-sticky-footer/
 
