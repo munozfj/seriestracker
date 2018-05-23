@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TheMovieDBService } from '../../../provides/services/the-movie-db.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Util } from '../../../lib/util';
+import { UtilService } from '../../../provides/services/util.service';
+
 
 @Component({
   selector: 'app-list',
@@ -10,6 +11,7 @@ import { Util } from '../../../lib/util';
   styles: []
 })
 export class ListComponent implements OnInit {
+
   base = '';
   query = '';
   page: number;
@@ -22,7 +24,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private tmdb: TheMovieDBService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    public util: UtilService
   ) {}
 
   ngOnInit() {
@@ -61,8 +64,8 @@ export class ListComponent implements OnInit {
                   .getSeries(
                     pageStorage,
                     'popularity.desc',
-                    Util.formattedDate(this.year),
-                    Util.formattedDate(this.today)
+                    this.util.formattedDate(this.year),
+                    this.util.formattedDate(this.today)
                   );
                  // .subscribe(data => (this.series = data));
               //   break;
@@ -72,7 +75,7 @@ export class ListComponent implements OnInit {
                   .getSeries(
                     pageStorage,
                     'first_air_date.asc',
-                    Util.formattedDate(this.today)
+                    this.util.formattedDate(this.today)
                   );
                 //  .subscribe(data => (this.series = data));
               //    break;
@@ -110,14 +113,14 @@ export class ListComponent implements OnInit {
         case  'year':
         this.tmdb.getSeries(  pageNr,
           'popularity.desc',
-          Util.formattedDate(this.year),
-          Util.formattedDate(this.today) ).subscribe( data => { this.series = data; this.loaded = true; } );
+          this.util.formattedDate(this.year),
+          this.util.formattedDate(this.today) ).subscribe( data => { this.series = data; this.loaded = true; } );
         break;
 
         case  'upcoming':
       this.tmdb.getSeries( pageNr,
         'first_air_date.asc',
-        Util.formattedDate(  this.today)
+        this.util.formattedDate(  this.today)
                                   ).subscribe( data => { this.series = data; this.loaded = true; } );
         break;
     }

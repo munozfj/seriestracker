@@ -1,6 +1,6 @@
 import { TheMovieDBService } from './../../../provides/services/the-movie-db.service';
 import { Component, OnInit } from '@angular/core';
-import { Util } from '../../../lib/util';
+import { UtilService } from '../../../provides/services/util.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
   year: Date = new Date( this.today.getFullYear(), 0 , 1);
   date: Date = new Date();
 
-  constructor( private tmdb: TheMovieDBService) { }
+  constructor( private tmdb: TheMovieDBService,
+                      public util: UtilService ) { }
 
   ngOnInit() {
 
@@ -25,12 +26,12 @@ export class HomeComponent implements OnInit {
 
     this.tmdb.getSeries(  1,
                                   'popularity.desc',
-                                  Util.formattedDate(this.year),
-                                  Util.formattedDate(this.today) ).subscribe( data => this.year_pop_series = data );
+                                  this.util.formattedDate(this.year),
+                                  this.util.formattedDate(this.today) ).subscribe( data => this.year_pop_series = data );
 
     this.tmdb.getSeries( 1,
       'first_air_date.asc',
-      Util.formattedDate(  this.today)
+      this.util.formattedDate(  this.today)
                                 ).subscribe( data => this.upcoming_series = data );
 
 
