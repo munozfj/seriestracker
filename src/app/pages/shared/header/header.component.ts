@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
 
   query = '';
+  isCollapsed = false;
+
   constructor( private router: Router) { }
 
   onSearch() {

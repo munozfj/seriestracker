@@ -15,9 +15,9 @@ body {
 }
 
 main {
-  /* Como la altura del header es 56 y la altura del footer es 50, entonces es por eso
+  /* Como la altura del header es 83 y la altura del footer es 50, entonces es por eso
   que a 100vh se le resta 106px*/
-  min-height: calc(100vh - 106px);
+  min-height: calc(100vh - 133px);
   padding: 40px 40px 0 40px;
 }
 footer {

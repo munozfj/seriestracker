@@ -7,7 +7,7 @@ export class ShowImagePipe implements PipeTransform {
 
   transform(photo: string, size: number,  type: string = 'poster' , add?: string )  {
 
-    const localUrl = './assets/images/';
+    const localUrl = './assets/images/no-images/';
     const remoteUrl = 'https://image.tmdb.org/t/p/';
 
     let image: string;
