@@ -1,0 +1,35 @@
+<div class="row" *ngIf="loaded; else loading">
+  <div class="col" *ngIf="loaded && series.results.length > 0; else notFound" >
+    <h2>Search for: <small>{{ query.split('-').join(' ') }}</small> </h2>
+
+    <ngb-pagination class="d-flex justify-content-end" [pageSize]="20"
+                                                                                    [collectionSize]="series.total_results"
+                                                                                    [boundaryLinks]="true"
+                                                                                    [maxSize]="5"
+                                                                                    [rotate]="true"
+                                                                                    [(page)]="series.page"
+                                                                                    (pageChange)="loadPage($event)" >
+    </ngb-pagination>
+
+    <app-list-display [data]="series" [component]="base" [query]="query" [page]="series.page" ></app-list-display>
+
+    <ngb-pagination class="d-flex justify-content-end mt-3" [pageSize]="20"
+                                                                                    [collectionSize]="series.total_results"
+                                                                                    [boundaryLinks]="true"
+                                                                                    [maxSize]="5"
+                                                                                    [rotate]="true"
+                                                                                    [(page)]="series.page"
+                                                                                    (pageChange)="loadPage($event)" >
+    </ngb-pagination>
+
+  </div>
+</div>
+
+
+<ng-template #loading>
+  <p>Cargando ..</p>
+</ng-template>
+
+<ng-template #notFound>
+    <p>No se encontraron registros para: <span class="font-weight-bold lead" > {{ query.replace('-',' ') }}</span> </p>
+  </ng-template>

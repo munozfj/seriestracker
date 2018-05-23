@@ -15,13 +15,17 @@
       <hr>
       <h3>Información General</h3>
       <p>
-        <span class=" font-weight-bold ">Fecha de inicio:</span> {{ serie.first_air_date }} </p>
+        <span class=" font-weight-bold ">Fecha de inicio:</span> {{ util.getNewDate( serie.first_air_date) | date:'dd/MM/yyyy' }} </p>
+        <p>
+          <span class=" font-weight-bold ">Estado:</span> {{ serie.status }} </p>
+          <p  *ngIf="serie.last_air_date" >
+            <span class=" font-weight-bold ">Fecha de finalización:</span> {{ util.getNewDate( serie.last_air_date) | date:'dd/MM/yyyy' }} </p>
       <p>
         <span class=" font-weight-bold ">Duración:</span> {{ serie.episode_run_time }} min. </p>
       <p>
         <span class=" font-weight-bold ">Homepage:</span> {{ serie.homepage }} </p>
-      <p>
-        <span class=" font-weight-bold ">Fecha fin de temporadas:</span> {{ serie.last_air_date }} </p>
+      <!-- p>
+        <span class=" font-weight-bold ">Fecha fin de temporadas:</span> {{ serie.last_air_date }} </p-->
       <p>
         <span class=" font-weight-bold ">Cadena:</span>
       </p>

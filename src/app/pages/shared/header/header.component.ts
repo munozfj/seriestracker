@@ -20,7 +20,7 @@ export class HeaderComponent {
     const query = this.query.trim().split(' ').join('-');
 
     // navego a la pagina de search
-    this.router.navigate(['/search', query ]);
+    this.router.navigate(['/list/search', query ]);
   }
 
 }

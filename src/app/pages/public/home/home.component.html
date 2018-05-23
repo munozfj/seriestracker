@@ -1,12 +1,10 @@
-<div class="row">
-  <div class="col">
-    <div class="jumbotron">
-      <h1 class="display-4">Hello, world!</h1>
-      <p class="lead">Series Tracker is coming</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </div>
-  </div>
-</div>
+<app-gallery title="Más populares " [data]="popular_series" criteria="top" *ngIf="popular_series"  >
+</app-gallery>
 
+<app-gallery title="Shows estrenados en lo que va de {{ today | date:'yyyy' }} "
+ [data]="year_pop_series" criteria="year" *ngIf="year_pop_series"  >
+</app-gallery>
+
+<app-gallery title="Próximos lanzamientos en {{ today | date:'yyyy' }}  "
+ [data]="upcoming_series" criteria="upcoming"  *ngIf="upcoming_series"  >
+</app-gallery>

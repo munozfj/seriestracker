@@ -1,6 +1,7 @@
-import { TheMovieDBService } from './../../provides/services/the-movie-db.service';
+import { UtilService } from './../../../provides/services/util.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TheMovieDBService } from '../../../provides/services/the-movie-db.service';
 
 @Component({
   selector: 'app-show',
@@ -16,12 +17,17 @@ export class ShowComponent implements OnInit {
 
   constructor( private actRoute: ActivatedRoute,
                       private router: Router,
-                      private tmdb: TheMovieDBService
+                      private tmdb: TheMovieDBService,
+                      public util: UtilService
   ) {}
 
   ngOnInit() {
     this.id = +this.actRoute.snapshot.paramMap.get('id');
-    this.tmdb.getId(this.id).subscribe( data => this.serie = data );
+    this.tmdb.getId(this.id).subscribe( data => {
+      this.serie = data;
+      console.log('show');
+      console.log(data);
+    });
 
 
 
@@ -31,9 +37,9 @@ export class ShowComponent implements OnInit {
   }
 
   returnTo() {
-    console.log('quiero volver');
-    const toUrl = '/' + localStorage.getItem('component') + '/' + localStorage.getItem('query');
-    console.log('quiero volver a: ' + toUrl);
+    // console.log('quiero volver');
+    const toUrl = '/list/' + localStorage.getItem('base') + '/' + localStorage.getItem('query');
+    // console.log('quiero volver a: ' + toUrl);
     this.router.navigate([toUrl]);
   }
 }

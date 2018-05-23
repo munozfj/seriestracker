@@ -11,7 +11,7 @@
                                                                                     (pageChange)="loadPage($event)" >
     </ngb-pagination>
 
-    <app-list-display [data]="series" component="search" [query]="query" [page]="series.page" ></app-list-display>
+    <app-list-display [data]="series" component="base" [query]="query" [page]="series.page" ></app-list-display>
 
     <ngb-pagination class="d-flex justify-content-end mt-3" [pageSize]="20"
                                                                                     [collectionSize]="series.total_results"

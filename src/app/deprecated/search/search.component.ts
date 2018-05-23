@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TheMovieDBService } from '../../../provides/services/the-movie-db.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TheMovieDBService } from '../../provides/services/the-movie-db.service';
 
 @Component({
   selector: 'app-search',
@@ -26,8 +26,8 @@ export class SearchComponent implements OnInit {
    /*  this.query = this.actRoute.snapshot.paramMap.get('query');
     this.stm = this.query.split('-');
 
-    const pageStorage = ( localStorage.getItem('component') === 'search' ) ? +localStorage.getItem('page') : 1;
-    localStorage.removeItem('component');
+    const pageStorage = ( localStorage.getItem('base') === 'search' ) ? +localStorage.getItem('page') : 1;
+    localStorage.removeItem('base');
     localStorage.removeItem('query');
     localStorage.removeItem('page');
 
@@ -41,8 +41,8 @@ export class SearchComponent implements OnInit {
                                                                                          // tslint:disable-next-line:max-line-length
                                                                                          this.stm = this.query.split('-');
 
-   const pageStorage = ( localStorage.getItem('component') === 'search' ) ? +localStorage.getItem('page') : 1;
-    localStorage.removeItem('component');
+   const pageStorage = ( localStorage.getItem('base') === 'search' ) ? +localStorage.getItem('page') : 1;
+    localStorage.removeItem('base');
     localStorage.removeItem('query');
     localStorage.removeItem('page');
                            return this.tmdb.getSeriesWithWords(this.stm , pageStorage);

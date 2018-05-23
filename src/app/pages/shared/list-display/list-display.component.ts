@@ -18,7 +18,7 @@ export class ListDisplayComponent  {
   constructor( private router: Router) { }
 
   goTo(id: number) {
-    localStorage.setItem('component', this.component);
+    localStorage.setItem('base', this.component);
     localStorage.setItem('query', this.query);
     localStorage.setItem('page', this.page.toString() );
     this.router.navigate(['/show', id ]);

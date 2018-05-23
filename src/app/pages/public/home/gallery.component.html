@@ -1,0 +1,52 @@
+<h2 class="pointer"  [routerLink]="['/list/series',  criteria ]"> {{title}}
+  <small class="muted lead"> ({{ data.total_results }}) </small>
+</h2>
+<hr class="new2">
+
+<div class="container-fluid mb-3 gallery bg-dark">
+
+  <div class="row">
+    <!-- pirmera columna-->
+    <div class="col-12 col-md-6">
+      <div class="row">
+        <div class="col-12 gal-big  h500" [ngStyle]="{background: data.results[0].backdrop_path  | showImage:500:'backdrop':'url'  , 'background-size': 'cover' , 'background-position': 'center center'  }">
+          <app-little-info [data2]="data.results[0]"></app-little-info>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 gal-small  h300" [ngStyle]="{background: data.results[4].poster_path  | showImage:500:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+          <app-little-info [data2]="data.results[4]"></app-little-info>
+        </div>
+
+        <div class="col-4 gal-small  h300" [ngStyle]="{background: data.results[5].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+          <app-little-info [data2]="data.results[5]"></app-little-info>
+        </div>
+
+        <div class="col-4 gal-small h300" [ngStyle]="{background: data.results[6].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+          <app-little-info [data2]="data.results[6]"></app-little-info>
+        </div>
+
+      </div>
+    </div>
+    <!-- segunda columna-->
+    <div class="col-12 col-md-6">
+      <div class="row ">
+        <div class=" col-4  h300" [ngStyle]="{background: data.results[1].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+          <app-little-info [data2]="data.results[1]"></app-little-info>
+        </div>
+        <div class="col-4   h300" [ngStyle]="{background: data.results[2].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+          <app-little-info [data2]="data.results[2]"></app-little-info>
+        </div>
+        <div class="col-4   h300" [ngStyle]="{background: data.results[3].poster_path  | showImage:300:'poster':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+          <app-little-info [data2]="data.results[3]"></app-little-info>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-12  h500" [ngStyle]="{background: data.results[7].backdrop_path  | showImage:500:'backdrop':'url'  , 'background-size': 'cover' , 'background-position': 'center center' }">
+          <app-little-info [data2]="data.results[7]"></app-little-info>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

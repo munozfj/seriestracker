@@ -25,11 +25,29 @@ export class TheMovieDBService {
     return this.http.jsonp(query, 'callback=JSONP_CALLBACK');
   }
 
+  getSeries(page: number = 1, order?: string, from?: string, to?: string) {
+    let query = `${this.urlDB}discover/tv?api_key=${
+      this.apiKey
+    }&language=es&with_original_language=en`;
+    // &first_air_date.gte=${year}-01-01&sort_by=first_air_date.asc&page=${page}`;
+    query += `&page=${page}`;
+    query += from ? `&first_air_date.gte=${from}` : '';
+    query += to ? `&first_air_date.lte=${to}` : '';
+    query += order ? `&sort_by=${order}` : '';
+    query += '&timezone=America%2FNew_York&include_null_first_air_dates=false';
+    // query += '&callback=JSONP_CALLBACK';
+
+    // return this.jsonp.get(query).map( data => data.json() );
+
+   //  console.log('query:' + query);
+    return this.http.jsonp(query, 'callback=JSONP_CALLBACK');
+  }
+
   getId(id: number) {
     const query = `${this.urlDB}tv/${id}?api_key=${this.apiKey}&language=es`;
     // query += '&callback=JSONP_CALLBACK';
 
-    //  console.log(query);
+      console.log(query);
 
     return this.http.jsonp(query, 'callback=JSONP_CALLBACK');
   }
