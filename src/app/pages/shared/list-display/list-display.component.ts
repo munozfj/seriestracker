@@ -1,3 +1,4 @@
+import { OmdbService } from './../../../provides/services/omdb.service';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilService } from '../../../provides/services/util.service';
@@ -5,7 +6,7 @@ import { UtilService } from '../../../provides/services/util.service';
 @Component({
   selector: 'app-list-display',
   templateUrl: './list-display.component.html',
-  styleUrls: ['./list-display.component.css']
+  styles: []
 })
 export class ListDisplayComponent  {
 
@@ -18,7 +19,8 @@ export class ListDisplayComponent  {
   widthTS = 185;
 
   constructor( private router: Router,
-  public util: UtilService) { }
+  public util: UtilService,
+ private omdb: OmdbService) { }
 
   goTo(id: number) {
     localStorage.setItem('base', this.base);

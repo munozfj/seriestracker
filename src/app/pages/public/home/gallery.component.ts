@@ -36,6 +36,7 @@ export class GalleryComponent {
   @Input('title') title: string;
   @Input('data') data: any;
   @Input('criteria') criteria: string;
+  @Input('order') order: string;
 
   // public backgroundImg: SafeStyle;
 

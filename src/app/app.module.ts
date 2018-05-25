@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { ListDisplayComponent } from './pages/shared/list-display/list-display.component';
 import { ShowImagePipe } from './pipes/show-image.pipe';
 import { GalleryComponent } from './pages/public/home/gallery.component';
@@ -42,7 +43,8 @@ import { ShowComponent } from './pages/public/show/show.component';
     HttpClientModule,
     HttpClientJsonpModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,10 @@
+import { OmdbService } from './../../../provides/services/omdb.service';
 import { UtilService } from './../../../provides/services/util.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TheMovieDBService } from '../../../provides/services/the-movie-db.service';
+import { switchMap } from 'rxjs/operators';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-show',
@@ -12,8 +15,12 @@ export class ShowComponent implements OnInit {
 
   id: number;
   serie: any;
-  seasonEpisodes: any;
+ // imdb_serie: any;
+  seasonEpisodes: any[] [] = [] ;
   widthPoster: 500;
+  widthSeasonPoster: 30;
+  panelOpenState: boolean = false;
+
 
   constructor( private actRoute: ActivatedRoute,
                       private router: Router,
@@ -22,11 +29,26 @@ export class ShowComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // obtengo el parametro id de la ruta
     this.id = +this.actRoute.snapshot.paramMap.get('id');
-    this.tmdb.getId(this.id).subscribe( data => {
-      this.serie = data;
-      console.log('show');
-      console.log(data);
+
+    // obtengo la informacion de la serie
+    this.tmdb.getId(this.id).subscribe( data1 => {
+      this.serie = data1;
+      // console.log('show');
+       console.log(data1);
+
+       for ( const season of this.serie.seasons) {
+
+         this.seasonEpisodes[this.id] = [];
+        this.tmdb
+        .getSeasonEpisodes(this.id, season.season_number )
+        .subscribe(data => {
+
+          this.seasonEpisodes[this.id] [season.season_number] = data;
+        });
+
+      }
     });
 
 

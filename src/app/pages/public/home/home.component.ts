@@ -32,7 +32,8 @@ export class HomeComponent implements OnInit {
     this.tmdb.getSeries(  1,
                                   'popularity.desc' ,
                                   this.util.formattedDate(this.oldDate),
-                                  this.util.formattedDate(this.today)     ).subscribe( data => this.popular_series = data );
+                                  this.util.formattedDate(this.today)
+                                   ).subscribe( data => this.popular_series = data );
 
     this.tmdb.getSeries(  1,
                                   'popularity.desc',
